@@ -12,6 +12,9 @@ Linguagens e ferramentas utilizadas no projeto:
   PHP
   SQL - Mysql
 
+  ![image](https://github.com/user-attachments/assets/5d59550f-c522-4538-afaf-75ed71cef846)
+
+
   A contagem é auditável. Não necessita de manipulação por parte do DBA, tabelas auto-gerenciaveis.
   O resultado da votação poderá ser acessado pelo localhost/resultados.
 
