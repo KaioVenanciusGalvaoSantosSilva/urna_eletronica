@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.urna-container {
+    background-color: #333;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-start;
+    width: 1200px;
+}
+
+.tela {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    width: 800px;
+    height: 400px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#display {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#info-candidato {
+    flex: 1;
+    padding-right: 20px;
+}
+
+#foto-candidato {
+    display: none; /* Alterar para 'block' quando necessário */
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    margin-left: 20px; /* Ajustado para espaçamento */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para destacar a imagem */
+}
+
+#numero-candidato {
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.teclado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numeros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.numero {
+    width: 160px;
+    height: 100px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ddd;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.acoes {
+    display: flex;
+    justify-content: space-between;
+    width: 600px; /* Ajuste conforme necessário */
+    margin-top: 20px;
+}
+
+#branco, #corrigir, #confirmar {
+    width: 180px; /* Ajustado para garantir que todos os botões sejam iguais */
+    height: 100px;
+    border: none;
+    border-radius: 10px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#branco {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+#corrigir {
+    background-color: #f36c12;
+}
+
+#confirmar {
+    background-color: #27ae60;
+}
+
+button:active {
+    opacity: 0.8;
+}
+
+#mensagem {
+    margin-top: 40px;
+    font-size: 36px;
+    color: red;
+}
+
+#imagem-fim {
+    display: none;
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    max-height: 500px;
+    object-fit: cover;
+    position: cover;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

@@ -1,0 +1,11 @@
+Para testar o codigo:
+instale o Xampp, insira o projeto dentro de 'C:\xampp\htdocs'
+
+inicie o servidor apache e mysql
+
+Abra o navegador e acesse localhost/phpmyadmin
+clique em sql e cole o conteúdo do arquivo 'bd.sql' e execute
+depois cole o codigo abaixo para inserir o usuário para testar o sistema.
+
+INSERT INTO candidatos (nome, partido, numero_eleitoral, votos, foto)
+VALUES ('Dilma', 'PT', '13', 0, '/img/dilma.jpg');
