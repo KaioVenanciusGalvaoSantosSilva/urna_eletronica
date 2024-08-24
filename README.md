@@ -1,4 +1,4 @@
-# urna_eletronica
+# urna_eletronica V 1.0
 
 Projeto didático para digitalizar a urna eleitoral em ambientes estudantis.
 
