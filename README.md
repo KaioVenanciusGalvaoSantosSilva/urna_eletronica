@@ -26,6 +26,8 @@ Linguagens e ferramentas utilizadas no projeto:
   No caso de erro deverá corrigir e digitar novamente.
 
   Toda vez que um usuário inserir o número do candidato deverá exibir a foto, nome do candidato, partido, número de candidatura.
+  ![Uploading image.png…]()
+
 
 Essa aplicação pode ser aplicada em qualquer escola para votação de alunos, diretores, ou até mesmo personagens favoritos, a aplicação é livre.
 Para aplicar no cenário real, o sistema deverá receber os dados de quem esta votando para evitar duplicidade de voto pela mesma pessoa.
