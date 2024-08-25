@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 candidatoEncontrado = true; // Define como encontrado
             } else {
                 const candidato = JSON.parse(this.responseText);
-                if (candidato) {
+                if (numeroCandidato.length ===2) {
                     document.getElementById('nome-candidato').textContent = "Nome: " + candidato.nome;
                     document.getElementById('partido-candidato').textContent = "Partido: " + candidato.partido;
                     document.getElementById('foto-candidato').src = candidato.foto;
@@ -126,9 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
             votoTipo = "branco";
         } else if (numero === "00") {
             votoTipo = "nulo";
-        } else if (numero.length === 2) {
+        } else if (numero.length === 2 ) {
             votoTipo = "candidato";
-        } else {
+        } else if (numero.length === 1 ) {
+            votoTipo = "candidato";
+        }else {
             votoTipo = "nulo";
         }
 
