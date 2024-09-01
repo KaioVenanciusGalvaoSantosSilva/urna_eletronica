@@ -11,13 +11,14 @@
         <h1>Cadastrar Candidato</h1>
         <form id="form-candidato" enctype="multipart/form-data" method="POST" action="cadastrar_candidato.php">
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+            <input type="text" id="nome" name="nome" required minlength="=1" maxlength="15">
 
             <label for="partido">Partido:</label>
-            <input type="text" id="partido" name="partido" required>
+            <input type="text" id="partido" name="partido" required minlength="=1" maxlength="15" > <!-- limitar campos em até 15 caracteres -->
+
 
             <label for="numero">Número:</label>
-            <input type="number" id="numero" name="numero" required min="1" step="1">
+            <input type="number" id="numero" name="numero" required min="1" max="99" step="1" > <!-- limitar campos em até 2 caracteres -->
 
             <label for="file-input">Foto:</label>
             <input type="file" id="file-input" name="file-input" accept="image/*" required>
