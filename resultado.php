@@ -1,4 +1,11 @@
-<?php include 'consulta.php'; ?>
+<?php 
+include 'consulta.php'; 
+
+// Ordena os candidatos do mais votado para o menos votado
+usort($candidatos, function($a, $b) {
+    return $b['votos'] - $a['votos'];
+});
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
