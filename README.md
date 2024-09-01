@@ -1,4 +1,4 @@
-# urna_eletronica V 1.3
+# urna_eletronica V 1.4
 
 Projeto didático para digitalizar a urna eleitoral em ambientes estudantis.
 
@@ -28,6 +28,7 @@ Linguagens e ferramentas utilizadas no projeto:
   Toda vez que um usuário inserir o número do candidato deverá exibir a foto, nome do candidato, partido, número de candidatura.
 ![image](https://github.com/user-attachments/assets/2e75a9de-247f-464d-953d-9d5e0e4ff177)
 
+Tela de Resultado ordenada de mais votado para menos votado
 
 Essa aplicação pode ser aplicada em qualquer escola para votação de alunos, diretores, ou até mesmo personagens favoritos, a aplicação é livre.
 Para aplicar no cenário real, o sistema deverá receber os dados de quem esta votando para evitar duplicidade de voto pela mesma pessoa.
