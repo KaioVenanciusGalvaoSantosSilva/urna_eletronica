@@ -185,6 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 mensagem.textContent = "";
             }
         }
-        xhr.send('numeroEleitoral=' + numero + '&votoTipo=' + votoTipo);
+        xhr.send('numeroEleitoral=' + numero + '&votoTipo=' + votoTipo + '&user_id=' + userId);
     }
 });

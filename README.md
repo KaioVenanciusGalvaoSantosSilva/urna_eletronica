@@ -1,4 +1,4 @@
-# urna_eletronica V 1.5
+# urna_eletronica V 1.6
 
 Projeto didático para digitalizar a urna eleitoral em ambientes estudantis.
 
@@ -30,6 +30,8 @@ Linguagens e ferramentas utilizadas no projeto:
 
 Tela de Resultado ordenada de mais votado para menos votado
 Limitação dos campos de cadastro a 15 caracteres para nome e partido, e 2 caracteres para o número do candidato, a foto deve ser usada uma foto local.
+Controle de acesso de usuário/voto
+Validação dos dados + tabela de usuarios
 
 Essa aplicação pode ser aplicada em qualquer escola para votação de alunos, diretores, ou até mesmo personagens favoritos, a aplicação é livre.
 Para aplicar no cenário real, o sistema deverá receber os dados de quem esta votando para evitar duplicidade de voto pela mesma pessoa.

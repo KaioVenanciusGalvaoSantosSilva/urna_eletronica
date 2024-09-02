@@ -21,3 +21,10 @@ CREATE TABLE IF NOT EXISTS votos (
     voto_tipo ENUM('candidato', 'branco', 'nulo') NOT NULL,
     FOREIGN KEY (numero_eleitoral) REFERENCES candidatos(numero_eleitoral) ON DELETE SET NULL
 );
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    RA VARCHAR(20) NOT NULL UNIQUE,
+    votou BOOLEAN NOT NULL DEFAULT 0
+);

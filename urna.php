@@ -1,3 +1,36 @@
+<?php
+session_start();
+
+// Verificar se o usuário está logado e se ainda não votou
+if (!isset($_SESSION['user_id'])) {
+    // Usuário não está logado, redirecionar para a página de login
+    header("Location: /");
+    exit;
+}
+
+// Conectar ao banco de dados
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=urna_eletronica', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Verificar se o usuário já votou
+    $stmt = $pdo->prepare("SELECT votou FROM usuarios WHERE id = ?");
+    $stmt->execute([$_SESSION['user_id']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+
+    if ($user && $user['votou']) {
+        // Usuário já votou, redirecionar para a página de RA
+        header("Location: /");
+        exit;
+    }
+    
+} catch (PDOException $e) {
+    echo "Erro ao conectar com o banco de dados: " . $e->getMessage();
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -18,7 +51,6 @@
                 </div>
                 <img id="foto-candidato" src="" alt="Foto do Candidato">
                 <img id="imagem-fim" src="img/fim.png"/>
-
             </div>
         </div>
         <div class="teclado">
@@ -35,7 +67,6 @@
                 <div></div> <!-- Espaço vazio para alinhamento -->
                 <button class="numero" data-num="0">0</button>
                 <audio id="somClick" src="/mp3/click.mp3" preload="auto"></audio>
-
             </div>
             <div class="acoes">
                 <button id="branco">BRANCO</button>
@@ -46,6 +77,10 @@
             <div id="mensagem"></div>
         </div>
     </div>
+    <script>
+        // Passa o user_id do PHP para o JavaScript
+        const userId = "<?php echo $_SESSION['user_id']; ?>";
+    </script>
     <script src="/js/scripts.js"></script>
 </body>
 </html>
