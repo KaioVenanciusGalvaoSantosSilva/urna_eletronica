@@ -18,7 +18,6 @@ try {
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
-
     if ($user && $user['votou']) {
         // Usuário já votou, redirecionar para a página de RA
         header("Location: /");
@@ -47,10 +46,11 @@ try {
                     <p id="numero-candidato"></p>
                     <p id="nome-candidato"></p>
                     <p id="partido-candidato"></p>
-                    <!-- Adicione a imagem ao seu HTML -->
+                    <p id="nome-vice"></p> <!-- Nome do vice-candidato -->
                 </div>
                 <img id="foto-candidato" src="" alt="Foto do Candidato">
-                <img id="imagem-fim" src="img/fim.png"/>
+                <img id="foto-vice" src="" alt="Foto do Vice-Candidato"> <!-- Foto do vice-candidato -->
+                <img id="imagem-fim" src="img/fim.png" alt="Fim da Votação"/> <!-- Imagem de fim de votação -->
             </div>
         </div>
         <div class="teclado">
@@ -74,7 +74,7 @@ try {
                 <button id="confirmar">CONFIRMAR</button>
                 <audio id="somConfirma" src="/mp3/som.mp3" preload="auto"></audio>
             </div>
-            <div id="mensagem"></div>
+            <div id="mensagem"></div> <!-- Mensagem de erro ou sucesso -->
         </div>
     </div>
     <script>

@@ -38,11 +38,13 @@ try {
         echo json_encode([
             'nome' => 'Voto Nulo',
             'partido' => '',
-            'foto' => ''
+            'foto' => '',
+            'nome_vice' => '',
+            'foto_vice' => ''
         ], JSON_UNESCAPED_UNICODE);
     } else {
-        // Prepara e executa a consulta para buscar o candidato
-        $query = $pdo->prepare("SELECT nome, partido, foto FROM candidatos WHERE numero_eleitoral = ?");
+        // Prepara e executa a consulta para buscar o candidato e o vice
+        $query = $pdo->prepare("SELECT nome, partido, foto, nome_vice, foto_vice FROM candidatos WHERE numero_eleitoral = ?");
         if (!$query->execute([$numeroEleitoral])) {
             echo json_encode(['erro' => 'Falha ao executar a consulta.'], JSON_UNESCAPED_UNICODE);
             exit();
@@ -52,7 +54,7 @@ try {
         $candidato = $query->fetch(PDO::FETCH_ASSOC);
 
         if ($candidato) {
-            // Retorna os dados do candidato em formato JSON
+            // Retorna os dados do candidato e do vice em formato JSON
             echo json_encode($candidato, JSON_UNESCAPED_UNICODE);
         } else {
             // Retorna uma resposta JSON vazia se o candidato não for encontrado

@@ -26,30 +26,42 @@ body {
     height: 400px;
     margin-right: 40px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Alterado para layout vertical */
     align-items: center;
 }
 
 #display {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row; /* Alinha o texto e as imagens na mesma linha */
+    align-items: center;
     width: 100%;
+    justify-content: space-between; /* Espaça o texto e as imagens */
 }
 
 #info-candidato {
     flex: 1;
     padding-right: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-#foto-candidato {
-    display: none; /* Alterar para 'block' quando necessário */
-    width: 300px;
-    height: 300px;
+#foto-candidato, #foto-vice {
+    display: none; /* Oculta as imagens inicialmente */
+    width: 150px; /* Reduzido para 50% do tamanho original */
+    height: 150px;
     object-fit: cover;
     object-position: center;
     border-radius: 10px;
-    margin-left: 20px; /* Ajustado para espaçamento */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para destacar a imagem */
+    margin-left: 20px; /* Espaço entre o texto e as imagens */
+}
+
+#foto-candidato {
+    display: none; /* Exibe a imagem quando necessário */
+}
+
+#foto-vice {
+    display: none; /* Exibe a imagem quando necessário */
 }
 
 #numero-candidato {

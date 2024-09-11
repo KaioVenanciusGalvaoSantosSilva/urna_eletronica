@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
         }
     });
-    
+
     document.addEventListener('contextmenu', function(event) {
         event.preventDefault();
     });
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    
+
     // Adiciona eventos aos botões numéricos
     document.querySelectorAll('.numero').forEach(button => {
         button.addEventListener('click', function() {
@@ -52,7 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('nome-candidato').textContent = "";
         document.getElementById('partido-candidato').textContent = "";
         document.getElementById('foto-candidato').style.display = 'none';
+        document.getElementById('foto-vice').style.display = 'none'; // Oculta a foto do vice-candidato
         document.getElementById('mensagem').textContent = "";
+        document.getElementById('nome-vice').textContent = "";
     });
 
     // Adiciona evento ao botão de BRANCO
@@ -71,7 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('numero-candidato').textContent = "Branco";
         document.getElementById('partido-candidato').textContent = "";
         document.getElementById('foto-candidato').style.display = 'none';
+        document.getElementById('foto-vice').style.display = 'none'; // Oculta a foto do vice-candidato
         document.getElementById('mensagem').textContent = "";
+        document.getElementById('nome-vice').textContent = "";
+
+        
     });
 
     // Adiciona evento ao botão de CONFIRMAR
@@ -80,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (candidatoEncontrado) {
                 confirmarVoto(numeroCandidato);
             } else {
-                // document.getElementById('mensagem').textContent = "Candidato não encontrado. O voto não será registrado.";
+                document.getElementById('mensagem').textContent = "Candidato não encontrado. O voto não será registrado.";
             }
         } else {
-            // document.getElementById('mensagem').textContent = "Digite um número de candidato.";
+            document.getElementById('mensagem').textContent = "Digite um número de candidato.";
         }
     });
 
@@ -98,19 +104,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('nome-candidato').textContent = "Voto Nulo";
                 document.getElementById('partido-candidato').textContent = "";
                 document.getElementById('foto-candidato').style.display = 'none';
+                document.getElementById('foto-vice').style.display = 'none'; // Oculta a foto do vice-candidato
                 candidatoEncontrado = true; // Define como encontrado
             } else {
                 const candidato = JSON.parse(this.responseText);
-                if (numeroCandidato.length ===2) {
-                    document.getElementById('nome-candidato').textContent = "Nome: " + candidato.nome;
-                    document.getElementById('partido-candidato').textContent = "Partido: " + candidato.partido;
-                    document.getElementById('foto-candidato').src = candidato.foto;
-                    document.getElementById('foto-candidato').style.display = 'block';
-                    candidatoEncontrado = true; // Define como encontrado
+                if (candidato) {
+                    if (numero.length === 2) {
+                        document.getElementById('nome-candidato').textContent = "Nome: " + candidato.nome;
+                        document.getElementById('partido-candidato').textContent = "Partido: " + candidato.partido;
+                        document.getElementById('foto-candidato').src = candidato.foto;
+                        document.getElementById('foto-candidato').style.display = candidato.foto ? 'block' : 'none';
+
+                        // Exibe os dados do vice-candidato
+                        document.getElementById('nome-vice').textContent = candidato.nome_vice ? `Vice: ${candidato.nome_vice}` : '';
+                        document.getElementById('foto-vice').src = candidato.foto_vice || 'img/default-vice.png';
+                        document.getElementById('foto-vice').style.display = candidato.nome_vice ? 'block' : 'none';
+                        
+                        candidatoEncontrado = true; // Define como encontrado
+                    } else {
+                        document.getElementById('nome-candidato').textContent = "Candidato não encontrado";
+                        document.getElementById('partido-candidato').textContent = "";
+                        document.getElementById('foto-candidato').style.display = 'none';
+                        document.getElementById('foto-vice').style.display = 'none'; // Oculta a foto do vice-candidato
+                        candidatoEncontrado = false; // Define como não encontrado
+                    }
                 } else {
                     document.getElementById('nome-candidato').textContent = "Candidato não encontrado";
                     document.getElementById('partido-candidato').textContent = "";
                     document.getElementById('foto-candidato').style.display = 'none';
+                    document.getElementById('foto-vice').style.display = 'none'; // Oculta a foto do vice-candidato
                     candidatoEncontrado = false; // Define como não encontrado
                 }
             }
@@ -126,11 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
             votoTipo = "branco";
         } else if (numero === "00") {
             votoTipo = "nulo";
-        } else if (numero.length === 2 ) {
+        } else if (numero.length === 2) {
             votoTipo = "candidato";
-        } else if (numero.length === 1 ) {
-            votoTipo = "candidato";
-        }else {
+        } else {
             votoTipo = "nulo";
         }
 
@@ -161,6 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 partidoCandidato.textContent = "";
                 nomeCandidato.textContent = "";
                 fotoCandidato.style.display = 'none'; // Oculta a foto
+                document.getElementById('nome-vice').textContent = "";
+                document.getElementById('foto-vice').style.display = 'none'; // Oculta a foto do vice-candidato
                 mensagem.textContent = ""; // Limpa a mensagem
 
                 // Limpa a tela da urna após 3 segundos
@@ -182,6 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 nomeCandidato.textContent = "";
                 partidoCandidato.textContent = this.responseText;
                 fotoCandidato.style.display = 'none';
+                document.getElementById('foto-vice').style.display = 'none'; // Oculta a foto do vice-candidato
+                document.getElementById('nome-vice').textContent = "";
                 mensagem.textContent = "";
             }
         }
